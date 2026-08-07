@@ -130,7 +130,7 @@ const StatsPanel = ({ news }: StatsPanelProps) => {
                   outerRadius={85}
                   dataKey="value"
                   stroke="none"
-                  label={({ name, percent }) => `${name.split(' - ')[0]} ${(percent * 100).toFixed(0)}%`}
+                  label={({ name, percent }: { name?: string; percent?: number }) => `${(name || '').split(' - ')[0]} ${((percent || 0) * 100).toFixed(0)}%`}
                   labelLine={false}
                 >
                   {typeData.map((_, index) => (

@@ -12,7 +12,7 @@ import NewsFiltersPanel from 'modules/news/components/organisms/NewsFilters/News
 import NewsTable from 'modules/news/components/organisms/NewsTable/NewsTable';
 import { ROUTES } from 'modules/shared/constants/routes';
 import type { NewsFormData, NewsFilters } from 'modules/news/types/news.types';
-import type { News, NewsState, TimeType, Worker, NewsType, Team } from 'modules/shared/types/database.types';
+import type { News, NewsState, TimeType, Worker, NewsType } from 'modules/shared/types/database.types';
 import type { SelectOption } from 'modules/shared/types/common.types';
 import './NewsListPage.scss';
 
@@ -21,7 +21,6 @@ const NewsListPage = () => {
   const navigate = useNavigate();
   const { items: news, status } = useAppSelector((state) => state.news);
   const { workers } = useAppSelector((state) => state.workers);
-  const { teams } = useAppSelector((state) => state.teams);
   const { newsTypes } = useAppSelector((state) => state.catalogs);
 
   // Filters
@@ -56,10 +55,6 @@ const NewsListPage = () => {
   const newsTypeOptions: SelectOption[] = newsTypes.map((nt: NewsType) => ({
     value: nt.id,
     label: `${nt.convention} - ${nt.name}`,
-  }));
-  const teamOptions: SelectOption[] = teams.map((t: Team) => ({
-    value: t.id,
-    label: `${t.name} - ${t.dependencia?.name || ''}`,
   }));
   const timeTypeOptions: SelectOption[] = [
     { value: 'days', label: 'Días (calendario)' },

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Download, FileSpreadsheet } from 'lucide-react';
 import { Button, Select } from 'modules/shared/components/atoms';
 import EmptyState from 'modules/shared/components/molecules/EmptyState/EmptyState';
@@ -320,7 +320,7 @@ const PTOPanel = ({ news, workers, holidays }: PTOPanelProps) => {
               const sundayOffset = endDay === 0 ? 0 : 7 - endDay;
               calEnd.setDate(calEnd.getDate() + sundayOffset);
 
-              const days: JSX.Element[] = [];
+              const days: React.ReactElement[] = [];
               const current = new Date(calStart);
 
               while (current <= calEnd) {

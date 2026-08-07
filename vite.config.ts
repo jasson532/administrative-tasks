@@ -10,11 +10,4 @@ export default defineConfig({
       styles: resolve(__dirname, 'src/styles'),
     },
   },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        api: 'modern-compiler',
-      },
-    },
-  },
 })
