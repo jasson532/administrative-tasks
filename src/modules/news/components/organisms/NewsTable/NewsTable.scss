@@ -1,0 +1,99 @@
+@use 'styles/variables' as *;
+@use 'styles/mixins' as *;
+
+.news-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  &__wrapper {
+    overflow-x: auto;
+  }
+
+  th {
+    text-align: left;
+    padding: $spacing-sm $spacing-md;
+    font-size: $font-size-xs;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border-primary);
+    white-space: nowrap;
+  }
+
+  td {
+    padding: $spacing-sm $spacing-md;
+    font-size: $font-size-sm;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-secondary);
+    vertical-align: middle;
+  }
+
+  tr:hover td {
+    background: var(--table-row-hover);
+  }
+
+  &__worker {
+    font-weight: 500;
+    color: var(--text-primary);
+    white-space: nowrap;
+  }
+
+  &__desc {
+    max-width: 180px;
+    @include truncate;
+  }
+
+  &__time {
+    white-space: nowrap;
+    font-size: $font-size-xs;
+  }
+
+  &__date {
+    white-space: nowrap;
+    color: $gray-500;
+    font-size: $font-size-xs;
+  }
+
+  &__empty {
+    text-align: center;
+    padding: $spacing-2xl !important;
+    color: $gray-400;
+    font-style: italic;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 4px;
+  }
+
+  &__action-btn {
+    background: none;
+    border: none;
+    padding: 5px;
+    border-radius: $radius-sm;
+    color: $gray-500;
+    cursor: pointer;
+    transition: all $transition-fast;
+
+    &:hover {
+      background: $primary-50;
+      color: $primary-600;
+    }
+
+    &--success:hover {
+      background: $success-light;
+      color: $success;
+    }
+
+    &--danger:hover {
+      background: $danger-light;
+      color: $danger;
+    }
+
+    &--warning:hover {
+      background: $warning-light;
+      color: $warning;
+    }
+  }
+}

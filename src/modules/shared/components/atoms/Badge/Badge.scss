@@ -1,0 +1,40 @@
+@use 'styles/variables' as *;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: $radius-full;
+  font-size: $font-size-xs;
+  font-weight: 500;
+
+  &--primary {
+    background: $primary-100;
+    color: $primary-700;
+  }
+
+  &--success {
+    background: $success-light;
+    color: #047857;
+  }
+
+  &--warning {
+    background: $warning-light;
+    color: #92400e;
+  }
+
+  &--danger {
+    background: $danger-light;
+    color: #b91c1c;
+  }
+
+  &--info {
+    background: $info-light;
+    color: #1d4ed8;
+  }
+
+  &--neutral {
+    background: $gray-100;
+    color: $gray-600;
+  }
+}

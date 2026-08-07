@@ -1,0 +1,195 @@
+@use 'styles/variables' as *;
+@use 'styles/mixins' as *;
+
+.availability {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+
+  &__summary {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__overall {
+    @include card;
+    padding: $spacing-xl $spacing-2xl;
+    display: flex;
+    align-items: center;
+    gap: $spacing-xl;
+    width: fit-content;
+
+    &--green { color: $success; }
+    &--yellow { color: $warning; }
+    &--red { color: $danger; }
+  }
+
+  &__overall-ring {
+    position: relative;
+    width: 120px;
+    height: 120px;
+  }
+
+  &__ring-svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__overall-value {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__overall-number {
+    font-size: $font-size-2xl;
+    font-weight: 800;
+  }
+
+  &__overall-label {
+    font-size: $font-size-xs;
+    color: $gray-500;
+  }
+
+  &__overall-info {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+
+    h3 {
+      font-size: $font-size-lg;
+      color: $gray-900;
+    }
+  }
+
+  &__overall-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__stat {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    font-size: $font-size-sm;
+    color: $gray-600;
+
+    &--absent {
+      color: $danger;
+    }
+  }
+
+  &__section-title {
+    font-size: $font-size-lg;
+    font-weight: 600;
+    color: $gray-800;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: $spacing-md;
+  }
+
+  &__team-card {
+    @include card;
+    padding: $spacing-lg;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    border-left: 4px solid transparent;
+    transition: all $transition-fast;
+
+    &--green { border-left-color: $success; }
+    &--yellow { border-left-color: $warning; }
+    &--red { border-left-color: $danger; }
+
+    &:hover {
+      box-shadow: $shadow-md;
+    }
+  }
+
+  &__team-header {
+    @include flex-between;
+  }
+
+  &__team-name {
+    h5 {
+      font-size: $font-size-base;
+      font-weight: 600;
+      color: $gray-900;
+    }
+  }
+
+  &__team-dep {
+    font-size: $font-size-xs;
+    color: $gray-500;
+  }
+
+  &__team-badge {
+    font-size: $font-size-lg;
+    font-weight: 700;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: $radius-md;
+
+    &--green { background: $success-light; color: #047857; }
+    &--yellow { background: $warning-light; color: #92400e; }
+    &--red { background: $danger-light; color: #dc2626; }
+  }
+
+  &__progress {
+    height: 6px;
+    background: $gray-100;
+    border-radius: $radius-full;
+    overflow: hidden;
+  }
+
+  &__progress-bar {
+    height: 100%;
+    border-radius: $radius-full;
+    transition: width $transition-base;
+
+    &--green { background: $success; }
+    &--yellow { background: $warning; }
+    &--red { background: $danger; }
+  }
+
+  &__absent-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: $spacing-xs;
+  }
+
+  &__absent-item {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    font-size: $font-size-xs;
+    color: $gray-600;
+    padding: 3px $spacing-sm;
+    background: $gray-50;
+    border-radius: $radius-sm;
+  }
+
+  &__absent-name {
+    font-weight: 500;
+  }
+
+  &__absent-reason {
+    color: $gray-400;
+    margin-left: auto;
+    font-style: italic;
+  }
+
+  &__all-present {
+    font-size: $font-size-xs;
+    color: $success;
+    font-weight: 500;
+    margin-top: $spacing-xs;
+  }
+}

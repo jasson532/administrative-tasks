@@ -1,0 +1,38 @@
+@use 'styles/variables' as *;
+
+.layout {
+  min-height: 100vh;
+
+  &__main {
+    min-height: 100vh;
+    padding-top: $header-height;
+    transition: margin-left $transition-base;
+    display: flex;
+    flex-direction: column;
+
+    &--sidebar-open {
+      margin-left: $sidebar-width;
+    }
+
+    &--sidebar-collapsed {
+      margin-left: 68px;
+    }
+
+    @media (max-width: 768px) {
+      &--sidebar-open,
+      &--sidebar-collapsed {
+        margin-left: 0;
+      }
+    }
+  }
+
+  &__content {
+    padding: $spacing-xl;
+    flex: 1;
+    width: 100%;
+
+    @media (max-width: 768px) {
+      padding: $spacing-md;
+    }
+  }
+}

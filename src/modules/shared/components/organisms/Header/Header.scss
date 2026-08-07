@@ -1,0 +1,170 @@
+@use 'styles/variables' as *;
+@use 'styles/mixins' as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: $header-height;
+  background: var(--header-bg);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 $spacing-xl;
+  z-index: 50;
+  transition: left $transition-base;
+
+  &--sidebar-open {
+    left: $sidebar-width;
+  }
+
+  &--sidebar-collapsed {
+    left: 68px;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+  }
+
+  &__menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: $gray-600;
+    padding: $spacing-xs;
+    border-radius: $radius-md;
+    cursor: pointer;
+    transition: all $transition-fast;
+
+    &:hover {
+      background: $gray-100;
+      color: $gray-800;
+    }
+
+    @media (max-width: 768px) {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__title {
+    font-size: $font-size-xl;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+  }
+
+  &__search {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__search-icon {
+    position: absolute;
+    left: 12px;
+    color: $gray-400;
+  }
+
+  &__search-input {
+    @include input-base;
+    width: 240px;
+    padding-left: 36px;
+    border-radius: $radius-full;
+    background: $gray-50;
+    border-color: transparent;
+
+    &:focus {
+      background: white;
+      border-color: $primary-300;
+    }
+  }
+
+  &__theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-tertiary);
+    padding: $spacing-sm;
+    border-radius: $radius-md;
+    cursor: pointer;
+    transition: all $transition-fast;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      background: var(--bg-hover);
+      color: $primary-500;
+    }
+  }
+
+  &__notification {
+    position: relative;
+    background: none;
+    border: none;
+    color: $gray-500;
+    padding: $spacing-sm;
+    border-radius: $radius-md;
+    transition: all $transition-fast;
+
+    &:hover {
+      background: $gray-100;
+      color: $gray-700;
+    }
+  }
+
+  &__notification-badge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 16px;
+    height: 16px;
+    background: $danger;
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__avatar {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, $primary-500, $primary-700);
+    border-radius: $radius-full;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: $font-size-xs;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    &--sidebar-open,
+    &--sidebar-collapsed {
+      left: 0;
+    }
+
+    padding: 0 $spacing-md;
+
+    &__search {
+      display: none;
+    }
+
+    &__title {
+      font-size: $font-size-base;
+    }
+  }
+}

@@ -1,0 +1,128 @@
+@use 'styles/variables' as *;
+@use 'styles/mixins' as *;
+
+.news-page {
+  max-width: 800px;
+
+  &__loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-md;
+    min-height: 400px;
+    color: var(--text-tertiary);
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xl;
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+    padding: $spacing-lg;
+    background: var(--bg-elevated);
+    border-radius: $radius-lg;
+    border: 1px solid var(--border-primary);
+  }
+
+  &__section-title {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    font-size: $font-size-base;
+    font-weight: 600;
+    color: $primary-700;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-md;
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__field-full {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__textarea {
+    @include input-base;
+    resize: vertical;
+    min-height: 80px;
+  }
+
+  &__time-days {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  &__date-range {
+    display: flex;
+    align-items: flex-end;
+    gap: $spacing-md;
+
+    @media (max-width: 640px) {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+
+  &__date-field {
+    position: relative;
+    flex: 1;
+  }
+
+  &__date-icon {
+    position: absolute;
+    right: 12px;
+    top: 38px;
+    color: var(--text-muted);
+    pointer-events: none;
+  }
+
+  &__date-separator {
+    font-size: $font-size-xl;
+    color: $primary-400;
+    padding-bottom: 8px;
+    font-weight: 600;
+
+    @media (max-width: 640px) {
+      text-align: center;
+    }
+  }
+
+  &__hint {
+    font-size: $font-size-xs;
+    color: var(--text-tertiary);
+    font-style: italic;
+    padding: $spacing-xs $spacing-sm;
+    background: $primary-50;
+    border-radius: $radius-sm;
+    border-left: 3px solid $primary-300;
+  }
+
+  &__time-hours,
+  &__time-minutes {
+    max-width: 250px;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: $spacing-sm;
+    padding-top: $spacing-md;
+    border-top: 1px solid var(--border-primary);
+  }
+}

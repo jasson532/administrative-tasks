@@ -1,0 +1,157 @@
+@use 'styles/variables' as *;
+
+.sidebar-backdrop {
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 99;
+    animation: fadeIn 0.2s ease;
+  }
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background: $surface-sidebar;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  transition: width $transition-base, transform $transition-base;
+  overflow: hidden;
+
+  &--open {
+    width: $sidebar-width;
+  }
+
+  &--collapsed {
+    width: 68px;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-lg $spacing-md;
+    border-bottom: 1px solid rgba(white, 0.08);
+    min-height: $header-height;
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    overflow: hidden;
+  }
+
+  &__logo {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, $primary-400, $primary-600);
+    border-radius: $radius-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: $font-size-sm;
+    flex-shrink: 0;
+  }
+
+  &__title {
+    font-size: $font-size-sm;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  &__toggle {
+    background: rgba(white, 0.08);
+    border: none;
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: $radius-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background $transition-fast;
+    flex-shrink: 0;
+
+    &:hover {
+      background: rgba(white, 0.15);
+    }
+  }
+
+  &__nav {
+    flex: 1;
+    padding: $spacing-md $spacing-sm;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    overflow-y: auto;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $radius-md;
+    color: rgba(white, 0.7);
+    text-decoration: none;
+    font-size: $font-size-sm;
+    font-weight: 500;
+    transition: all $transition-fast;
+    white-space: nowrap;
+
+    &:hover {
+      background: rgba(white, 0.08);
+      color: white;
+    }
+
+    &--active {
+      background: rgba(white, 0.12);
+      color: white;
+      box-shadow: inset 3px 0 0 $primary-400;
+    }
+  }
+
+  &__footer {
+    padding: $spacing-md;
+    border-top: 1px solid rgba(white, 0.08);
+  }
+
+  &__version {
+    font-size: $font-size-xs;
+    color: rgba(white, 0.4);
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    &--open {
+      width: $sidebar-width;
+      transform: translateX(0);
+    }
+
+    &--collapsed {
+      width: $sidebar-width;
+      transform: translateX(-100%);
+    }
+
+    // Always show close button on mobile when open
+    &--collapsed &__toggle {
+      display: none;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

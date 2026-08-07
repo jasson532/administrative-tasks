@@ -1,0 +1,125 @@
+@use 'styles/variables' as *;
+@use 'styles/mixins' as *;
+
+.workers-page {
+  &__loading {
+    @include flex-center;
+    min-height: 400px;
+  }
+
+  &__search {
+    position: relative;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+  }
+
+  &__search-input {
+    @include input-base;
+    padding-left: 36px;
+  }
+
+  &__table-wrapper {
+    overflow-x: auto;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th {
+      text-align: left;
+      padding: $spacing-sm $spacing-md;
+      font-size: $font-size-xs;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--border-primary);
+    }
+
+    td {
+      padding: $spacing-sm $spacing-md;
+      font-size: $font-size-sm;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border-secondary);
+    }
+
+    tr:hover td {
+      background: var(--table-row-hover);
+    }
+  }
+
+  &__name {
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  &__email {
+    font-size: $font-size-xs;
+    color: var(--text-tertiary);
+    max-width: 180px;
+    @include truncate;
+  }
+
+  &__date {
+    font-size: $font-size-xs;
+    color: var(--text-tertiary);
+    white-space: nowrap;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $spacing-xs;
+  }
+
+  &__action-btn {
+    background: none;
+    border: none;
+    padding: 6px;
+    border-radius: $radius-sm;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    transition: all $transition-fast;
+
+    &:hover {
+      background: var(--table-row-hover);
+      color: $primary-600;
+    }
+
+    &--danger:hover {
+      background: $danger-light;
+      color: $danger;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+  }
+
+  &__form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-md;
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: $spacing-sm;
+    padding-top: $spacing-md;
+    border-top: 1px solid var(--border-primary);
+  }
+}

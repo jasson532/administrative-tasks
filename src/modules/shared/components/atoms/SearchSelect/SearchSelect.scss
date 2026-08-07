@@ -1,0 +1,156 @@
+@use 'styles/variables' as *;
+@use 'styles/mixins' as *;
+
+.search-select {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &__label {
+    font-size: $font-size-sm;
+    font-weight: 500;
+    color: $gray-700;
+  }
+
+  &__control {
+    @include input-base;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    min-height: 38px;
+    padding: $spacing-sm $spacing-md;
+  }
+
+  &__value {
+    font-size: $font-size-sm;
+    color: $gray-800;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__placeholder {
+    color: $gray-400;
+    font-size: $font-size-sm;
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+
+  &__clear {
+    background: none;
+    border: none;
+    color: $gray-400;
+    padding: 2px;
+    cursor: pointer;
+    display: flex;
+    border-radius: $radius-sm;
+
+    &:hover {
+      color: $danger;
+      background: $danger-light;
+    }
+  }
+
+  &__chevron {
+    color: $gray-400;
+    transition: transform $transition-fast;
+
+    &--open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 4px;
+    background: white;
+    border: 1px solid $gray-200;
+    border-radius: $radius-md;
+    box-shadow: $shadow-lg;
+    z-index: 50;
+    overflow: hidden;
+    animation: slideDown 0.15s ease;
+  }
+
+  &__search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $gray-100;
+  }
+
+  &__search-icon {
+    position: absolute;
+    left: 12px;
+    color: $gray-400;
+  }
+
+  &__search {
+    width: 100%;
+    padding: $spacing-sm $spacing-md $spacing-sm 34px;
+    border: none;
+    font-size: $font-size-sm;
+    outline: none;
+    font-family: $font-family;
+
+    &::placeholder {
+      color: $gray-400;
+    }
+  }
+
+  &__options {
+    max-height: 200px;
+    overflow-y: auto;
+    padding: $spacing-xs 0;
+  }
+
+  &__option {
+    padding: $spacing-sm $spacing-md;
+    font-size: $font-size-sm;
+    color: $gray-700;
+    cursor: pointer;
+    transition: background $transition-fast;
+
+    &:hover {
+      background: $primary-50;
+      color: $primary-700;
+    }
+
+    &--selected {
+      background: $primary-100;
+      color: $primary-800;
+      font-weight: 500;
+    }
+  }
+
+  &__no-results {
+    padding: $spacing-md;
+    text-align: center;
+    color: $gray-400;
+    font-size: $font-size-sm;
+  }
+
+  &__error {
+    font-size: $font-size-xs;
+    color: $danger;
+  }
+
+  &--error &__control {
+    border-color: $danger;
+  }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}

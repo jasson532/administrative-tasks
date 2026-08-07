@@ -1,0 +1,107 @@
+@use 'styles/variables' as *;
+@use 'styles/mixins' as *;
+
+.news-list {
+  &__loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-md;
+    min-height: 400px;
+    color: var(--text-tertiary);
+  }
+
+  &__top-actions {
+    display: flex;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-lg;
+  }
+
+  // Edit form inside modal
+  &__edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+  }
+
+  &__edit-section {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+    padding: $spacing-lg;
+    background: var(--bg-elevated);
+    border-radius: $radius-lg;
+    border: 1px solid var(--border-primary);
+  }
+
+  &__edit-section-title {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    font-size: $font-size-base;
+    font-weight: 600;
+    color: $primary-700;
+  }
+
+  &__edit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: $spacing-md;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__edit-dates {
+    display: flex;
+    align-items: flex-end;
+    gap: $spacing-md;
+  }
+
+  &__edit-date-field {
+    position: relative;
+    flex: 1;
+  }
+
+  &__edit-date-icon {
+    position: absolute;
+    right: 12px;
+    top: 38px;
+    color: var(--text-muted);
+    pointer-events: none;
+  }
+
+  &__edit-date-sep {
+    font-size: $font-size-xl;
+    color: $primary-400;
+    padding-bottom: 8px;
+    font-weight: 600;
+  }
+
+  &__edit-description {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__edit-textarea {
+    @include input-base;
+    resize: vertical;
+    min-height: 80px;
+  }
+
+  &__edit-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: $spacing-md;
+    border-top: 1px solid var(--border-primary);
+  }
+
+  &__edit-actions-right {
+    display: flex;
+    gap: $spacing-sm;
+  }
+}

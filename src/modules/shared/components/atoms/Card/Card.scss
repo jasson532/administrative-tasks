@@ -1,0 +1,41 @@
+@use 'styles/variables' as *;
+@use 'styles/mixins' as *;
+
+.card {
+  @include card;
+
+  &--padded {
+    .card__body {
+      padding: $spacing-lg;
+    }
+  }
+
+  &__header {
+    @include flex-between;
+    padding: $spacing-lg;
+    border-bottom: 1px solid var(--border-secondary);
+  }
+
+  &__header-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  &__subtitle {
+    font-size: $font-size-sm;
+    color: var(--text-tertiary);
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+  }
+}

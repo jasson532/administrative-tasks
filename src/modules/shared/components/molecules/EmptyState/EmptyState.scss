@@ -1,0 +1,40 @@
+@use 'styles/variables' as *;
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-2xl $spacing-xl;
+  text-align: center;
+  gap: $spacing-md;
+
+  &__icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, $primary-50, $primary-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $primary-400;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: 600;
+    color: $gray-700;
+  }
+
+  &__description {
+    font-size: $font-size-sm;
+    color: $gray-500;
+    max-width: 320px;
+    line-height: 1.5;
+  }
+
+  &__action {
+    margin-top: $spacing-sm;
+  }
+}

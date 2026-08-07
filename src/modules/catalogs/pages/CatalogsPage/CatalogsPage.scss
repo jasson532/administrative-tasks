@@ -1,0 +1,118 @@
+@use 'styles/variables' as *;
+@use 'styles/mixins' as *;
+
+.catalogs-page {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+
+  &__loading {
+    @include flex-center;
+    min-height: 400px;
+  }
+
+  &__tabs {
+    display: flex;
+    gap: $spacing-xs;
+    flex-wrap: wrap;
+    padding: $spacing-xs;
+    background: var(--bg-card);
+    border-radius: $radius-lg;
+    box-shadow: $shadow-sm;
+    border: 1px solid var(--border-primary);
+  }
+
+  &__tab {
+    padding: $spacing-sm $spacing-md;
+    border: none;
+    background: transparent;
+    border-radius: $radius-md;
+    font-size: $font-size-sm;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    transition: all $transition-fast;
+
+    &:hover {
+      background: var(--bg-hover);
+      color: var(--text-primary);
+    }
+
+    &--active {
+      background: $primary-600;
+      color: white;
+
+      &:hover {
+        background: $primary-700;
+        color: white;
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $radius-md;
+    border: 1px solid var(--border-primary);
+    transition: all $transition-fast;
+
+    &:hover {
+      background: var(--bg-hover);
+      border-color: $primary-200;
+    }
+  }
+
+  &__item-info {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+  }
+
+  &__item-name {
+    font-size: $font-size-sm;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  &__delete-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    padding: 4px;
+    border-radius: $radius-sm;
+    cursor: pointer;
+    transition: all $transition-fast;
+    opacity: 0;
+
+    .catalogs-page__item:hover & {
+      opacity: 1;
+    }
+
+    &:hover {
+      color: $danger;
+      background: $danger-light;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+
+  &__form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: $spacing-sm;
+    padding-top: $spacing-md;
+    border-top: 1px solid $gray-100;
+  }
+}

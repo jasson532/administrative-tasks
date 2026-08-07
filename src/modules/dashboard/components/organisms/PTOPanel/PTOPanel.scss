@@ -1,0 +1,351 @@
+@use 'styles/variables' as *;
+@use 'styles/mixins' as *;
+
+.pto-panel {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+
+  &__controls {
+    @include card;
+    padding: $spacing-lg;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: $spacing-lg;
+    flex-wrap: wrap;
+  }
+
+  &__selectors {
+    display: flex;
+    gap: $spacing-md;
+    align-items: flex-end;
+  }
+
+  &__period-display {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    padding: $spacing-sm $spacing-md;
+    background: $primary-50;
+    border: 1px solid $primary-200;
+    border-radius: $radius-md;
+    height: 38px;
+  }
+
+  &__period-q {
+    font-weight: 700;
+    color: $primary-700;
+    font-size: $font-size-base;
+  }
+
+  &__period-range {
+    font-size: $font-size-sm;
+    color: $primary-600;
+    font-weight: 500;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-lg;
+  }
+
+  &__summary {
+    display: flex;
+    gap: $spacing-md;
+  }
+
+  &__summary-item {
+    font-size: $font-size-sm;
+    color: var(--text-tertiary);
+    padding: $spacing-xs $spacing-sm;
+    background: var(--bg-elevated);
+    border-radius: $radius-md;
+
+    strong {
+      color: $primary-400;
+      font-weight: 700;
+    }
+  }
+
+  &__period-label {
+    font-size: $font-size-sm;
+    color: $gray-600;
+    padding: $spacing-sm $spacing-md;
+    background: $primary-50;
+    border-radius: $radius-md;
+    border-left: 3px solid $primary-400;
+
+    strong {
+      color: $primary-800;
+    }
+  }
+
+  &__table-wrapper {
+    @include card;
+    overflow-x: auto;
+    padding: 0;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th {
+      text-align: left;
+      padding: $spacing-sm $spacing-md;
+      font-size: $font-size-xs;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 2px solid var(--border-primary);
+      white-space: nowrap;
+      background: var(--bg-elevated);
+    }
+
+    td {
+      padding: $spacing-sm $spacing-md;
+      font-size: $font-size-sm;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border-secondary);
+      vertical-align: middle;
+    }
+
+    tr:hover td {
+      background: var(--table-row-hover);
+    }
+
+    tfoot td {
+      border-top: 2px solid var(--border-primary);
+      background: var(--bg-elevated);
+      font-weight: 600;
+    }
+  }
+
+  &__cell-team {
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  &__cell-name {
+    font-weight: 500;
+    color: var(--text-primary);
+    white-space: nowrap;
+  }
+
+  &__cell-role {
+    font-size: $font-size-xs;
+    color: var(--text-tertiary);
+    white-space: nowrap;
+  }
+
+  &__cell-type {
+    white-space: nowrap;
+  }
+
+  &__cell-date {
+    white-space: nowrap;
+    font-size: $font-size-xs;
+    color: var(--text-tertiary);
+  }
+
+  &__cell-number {
+    text-align: center;
+    font-weight: 600;
+    color: $primary-400;
+  }
+
+  &__cell-total {
+    font-size: $font-size-base;
+    color: $primary-800;
+  }
+
+  &__cell-obs {
+    max-width: 200px;
+    @include truncate;
+    font-size: $font-size-xs;
+    color: var(--text-muted);
+  }
+
+  &__cell-period {
+    font-family: monospace;
+    font-size: $font-size-xs;
+    color: var(--text-muted);
+  }
+
+  &__footer-label {
+    text-align: right;
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+
+  &__empty {
+    text-align: center;
+    padding: $spacing-2xl !important;
+    color: $gray-400;
+    font-style: italic;
+  }
+
+  // Period Calendar
+  &__calendar {
+    @include card;
+    padding: $spacing-xl;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+  }
+
+  &__calendar-title {
+    font-size: $font-size-lg;
+    font-weight: 600;
+    color: $gray-800;
+  }
+
+  &__calendar-legend {
+    display: flex;
+    gap: $spacing-lg;
+    flex-wrap: wrap;
+  }
+
+  &__legend-item {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    font-size: $font-size-sm;
+    color: $gray-600;
+  }
+
+  &__legend-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: $radius-sm;
+
+    &--business { background: $primary-100; border: 2px solid $primary-400; }
+    &--weekend { background: $gray-100; border: 2px solid $gray-300; }
+    &--holiday { background: $danger-light; border: 2px solid $danger; }
+    &--today { background: $warning-light; border: 2px solid $warning; }
+  }
+
+  &__calendar-grid {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+  }
+
+  &__calendar-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: $spacing-xs;
+
+    span {
+      text-align: center;
+      font-size: $font-size-xs;
+      font-weight: 600;
+      color: $gray-500;
+      text-transform: uppercase;
+      padding: $spacing-xs;
+    }
+  }
+
+  &__calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: $spacing-xs;
+  }
+
+  &__day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-sm $spacing-xs;
+    border-radius: $radius-md;
+    min-height: 56px;
+    transition: all $transition-fast;
+    border: 2px solid transparent;
+
+    &--business {
+      background: $primary-50;
+      border-color: $primary-200;
+
+      .pto-panel__day-number {
+        color: $primary-700;
+        font-weight: 600;
+      }
+    }
+
+    &--weekend {
+      background: $gray-50;
+      border-color: $gray-200;
+
+      .pto-panel__day-number {
+        color: $gray-400;
+      }
+    }
+
+    &--holiday {
+      background: $danger-light;
+      border-color: #fca5a5;
+
+      .pto-panel__day-number {
+        color: $danger;
+        font-weight: 600;
+      }
+    }
+
+    &--today {
+      border-color: $warning !important;
+      box-shadow: 0 0 0 2px rgba($warning, 0.25);
+    }
+
+    &--outside {
+      opacity: 0.3;
+      background: transparent;
+      border-color: transparent;
+    }
+
+    &:hover:not(&--outside) {
+      transform: scale(1.05);
+      box-shadow: $shadow-sm;
+    }
+  }
+
+  &__day-number {
+    font-size: $font-size-base;
+    font-weight: 500;
+    color: $gray-700;
+  }
+
+  &__day-label {
+    font-size: 9px;
+    color: $danger;
+    text-align: center;
+    line-height: 1.1;
+    margin-top: 2px;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__calendar-stats {
+    display: flex;
+    gap: $spacing-lg;
+    padding-top: $spacing-md;
+    border-top: 1px solid $gray-100;
+  }
+
+  &__calendar-stat {
+    font-size: $font-size-sm;
+    color: $gray-600;
+
+    strong {
+      color: $primary-700;
+      font-weight: 700;
+      font-size: $font-size-lg;
+      margin-right: 4px;
+    }
+  }
+}
