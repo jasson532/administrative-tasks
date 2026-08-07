@@ -19,6 +19,13 @@
     gap: $spacing-xl;
     width: fit-content;
 
+    @media (max-width: 480px) {
+      padding: $spacing-lg;
+      flex-direction: column;
+      width: 100%;
+      text-align: center;
+    }
+
     &--green { color: $success; }
     &--yellow { color: $warning; }
     &--red { color: $danger; }
@@ -93,6 +100,10 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: $spacing-md;
+
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__team-card {

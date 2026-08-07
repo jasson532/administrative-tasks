@@ -28,8 +28,9 @@
       grid-template-columns: repeat(2, 1fr);
     }
 
-    @media (max-width: 640px) {
-      grid-template-columns: 1fr;
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr 1fr;
+      gap: $spacing-sm;
     }
   }
 
@@ -41,6 +42,13 @@
     gap: $spacing-md;
     transition: all $transition-base;
     border: 1px solid transparent;
+
+    @media (max-width: 480px) {
+      padding: $spacing-md;
+      flex-direction: column;
+      text-align: center;
+      gap: $spacing-sm;
+    }
 
     &:hover {
       transform: translateY(-3px);
@@ -116,6 +124,12 @@
     border-radius: $radius-xl;
     box-shadow: var(--shadow-md);
     border: 1px solid var(--border-primary);
+    overflow-x: auto;
+
+    @media (max-width: 768px) {
+      padding: $spacing-xs;
+      border-radius: $radius-lg;
+    }
   }
 
   &__tab {
@@ -131,6 +145,13 @@
     color: var(--text-tertiary);
     cursor: pointer;
     transition: all $transition-fast;
+    white-space: nowrap;
+
+    @media (max-width: 768px) {
+      padding: $spacing-sm $spacing-md;
+      font-size: $font-size-sm;
+      gap: $spacing-xs;
+    }
 
     &:hover {
       background: var(--bg-hover);
